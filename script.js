@@ -1,5 +1,8 @@
 // GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
+$(document).ready(function(){
+
+
 // THEN the current day is displayed at the top of the calendar
 // WHEN I scroll down
 // THEN I am presented with timeblocks for standard business hours
@@ -23,48 +26,40 @@ $(function (){
 // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 // WHEN I click into a timeblock
 $(".timeBlock").on('click', function(){
-    onAppointmentFormCreated: function (e) {
-        var form = e.form;
-        var formItems= form.option("items");
-
-        form.itemOption("startDate",{
-            helpText: "Select a date between June 15 and 21",
-            editorOptions: {
-                min: new Date(2020, 06, 15),
-                format: "datetime"
-            }
+    $("div#form1").append(
+        // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+        $("<h3/>").text("Contact Form"), $("<p/>").text("This is my form. Please fill it out. It's awesome!"), $("<form/>", {
+        action: '#',
+        method: '#'
+        }).append(
+        // Create <form> Tag and Appending in HTML id="descrip".
+        $("<input/>", {
+        type: 'text',
+        id: 'vevent',
+        name: 'event',
+        placeholder: 'Event'
+        }), // Creating Input Element With Attribute.
+        $("<input/>", {
+        type: 'text',
+        id: 'vtime',
+        name: 'time',
+        placeholder: 'Start Time'
+        }), $("<textarea/>", {
+        rows: '5px',
+        cols: '27px',
+        type: 'text',
+        id: 'vdes',
+        name: 'description',
+        placeholder: 'description'
+        }), $("<br/>"), $("<input/>", {
+        type: 'submit',
+        id: 'submit',
+        value: 'Submit'
+        })))
         });
-
-        form.itemOption("description", {
-            validationRules: [{
-                type: "required",
-                message: "description is required"
-            }]
-        });
-
-        form.itemOption("text", {
-            validationRules: [{
-                type: "required",
-                message: "Subject is required"
-            }]
-        });
-
-        formItems.push({
-            dataField: "location",
-            editorType: "dxTextBox",
-            label: {
-                text: "Location"
-            }
-        });
-
-        form.option({
-            items: "formItems",
-        });
-    }
+ 
 
 });
-
-};
 
 // WHEN I click the save button for that timeblock
 // THEN the text for that event is saved in local storage
@@ -86,7 +81,7 @@ $(".saveBtn").on("click", function(event){
 // THEN the saved events persist
 // ```
     
-
+})
 //function settingDate(date, day){
     //     date= new Date(date);
     //     date.setDate(0);
