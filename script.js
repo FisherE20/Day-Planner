@@ -9,8 +9,8 @@ $(function (){
         currentData:new Date(2020/06/11),
         startDayHour: 8,
         endDayHour: 19,
-        views: ["month", "week", "workWeek", "day"],
-        currentView: "workWeek",
+        views: ["day"],
+        currentView: "day",
         resource: [{
             dataSource: resourcsData,
             allowMultiple: true,
@@ -22,6 +22,49 @@ $(function (){
 // WHEN I view the timeblocks for that day
 // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 // WHEN I click into a timeblock
+$(".timeBlock").on('click', function(){
+    onAppointmentFormCreated: function (e) {
+        var form = e.form;
+        var formItems= form.option("items");
+
+        form.itemOption("startDate",{
+            helpText: "Select a date between June 15 and 21",
+            editorOptions: {
+                min: new Date(2020, 06, 15),
+                format: "datetime"
+            }
+        });
+
+        form.itemOption("description", {
+            validationRules: [{
+                type: "required",
+                message: "description is required"
+            }]
+        });
+
+        form.itemOption("text", {
+            validationRules: [{
+                type: "required",
+                message: "Subject is required"
+            }]
+        });
+
+        formItems.push({
+            dataField: "location",
+            editorType: "dxTextBox",
+            label: {
+                text: "Location"
+            }
+        });
+
+        form.option({
+            items: "formItems",
+        });
+    }
+
+});
+
+};
 
 // WHEN I click the save button for that timeblock
 // THEN the text for that event is saved in local storage
@@ -30,54 +73,14 @@ $(function (){
 // ```
 
 // THEN I can enter an event
-     onAppointmentFormCreated: function (e) {
-            var form = e.form;
-            var formItems= form.option("items");
-
-            form.itemOption("startDate",{
-                helpText: "Select a date between June 15 and 21",
-                editorOptions: {
-                    min: new Date(2020, 06, 15),
-                    max: new Date(2020, 06, 21),
-                    format: "datetime"
-                }
-            });
-
-            form.itemOption("description", {
-                validationRules: [{
-                    type: "required",
-                    message: "description is required"
-                }]
-            });
-
-            form.itemOption("text", {
-                validationRules: [{
-                    type: "required",
-                    message: "Subject is required"
-                }]
-            });
-
-            formItems.push({
-                dataField: "location",
-                editorType: "dxTextBox",
-                label: {
-                    text: "Location"
-                }
-            });
-
-            form.option({
-                items: "formItems",
-            });
-        }
-
-    });
+  
 // WHEN I click the save button for that timeblock
-saveBtn.addEventListener('click', function(){
+$(".saveBtn").on("click", function(event){
     // THEN the text for that event is saved in local storage
     $('#test').html("Test");
     localStorage.content = $('#test').html();
-    $('#test').html(localStorage.content);
-})
+    $('#test').html(localStorage.content)
+});
 
 // WHEN I refresh the page
 // THEN the saved events persist
