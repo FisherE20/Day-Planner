@@ -25,7 +25,7 @@ $(function (){
 // WHEN I view the timeblocks for that day
 // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 // WHEN I click into a timeblock
-$(".timeBlock").on('click', function(){
+$("#descrip").on('click', function(){
     $("div#form1").append(
         // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
         $("<h3/>").text("Contact Form"), $("<p/>").text("This is my form. Please fill it out. It's awesome!"), $("<form/>", {
