@@ -1,5 +1,5 @@
 let date= moment().format('MMMM Do YYYY, h:mm:ss a');
-let getHours= moment().format('h');
+let getHours= moment().format('h:mm');
 
 // GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
@@ -148,14 +148,16 @@ $("#btn17").on('click', function(){
 // // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 
 var currentTime = new Date().getHours();
-if (7 <= currentTime && currentTime < 17) {
-  if (currentTime < 7) {
-     $('.description').css('.past');
+
+if (9 <= currentTime && currentTime < 17) {
+  
+  if (currentTime < 9) {
+     $('.description').css("backgroundColor",".past");
   }
 }
 else {
   if (currentTime < 17) {
-    $('.description').css('.future');
+    $('.description').css("backgroundColor",".future");
   }
 };
 
