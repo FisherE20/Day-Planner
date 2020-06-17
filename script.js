@@ -1,131 +1,169 @@
+let date= moment().format('MMMM Do YYYY, h:mm:ss a');
+let getHours= moment().format('h');
+
 // GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
+$('#currentDay').append(date);
+
 $(document).ready(function(){
-$(".hour").on('click', function(){
-    var input= prompt();
-    $('.description').append(input);
+  
+// WHEN I click the save button for that timeblock
+// THEN the text for that event is saved in local storage   
+$("#btn1").on('click', function(){
+    event.preventDefault();
+    
+    if($('#input1').val()) {
+      localStorage.removeItem('input1');
+    }
+      localStorage.setItem( time1,$('#input1').val());
+  });
+
+  $("#btn2").on('click', function(){
+  
+    if($('#input2').val()) {
+    localStorage.removeItem('input2');
+  }
+    localStorage.setItem( time2,$('#input2').val());
+});
+  $("#btn3").on('click', function(){
+
+    if($('#input3').val()) {
+  localStorage.removeItem('input3');
+}
+  localStorage.setItem( time3,$('#input3').val());
 });
 
+$("#btn4").on('click', function(){
 
+  if($('#input4').val()) {
+  localStorage.removeItem('input4');
+}
+  localStorage.setItem( time4,$('#input4').val());
+});
 
-$(".saveBtn").on('click', function(){
-    //Working- you are alerted!
-    alert('You clicked the Save Button')
-    //local storage states content is undefined
-    $('.description').html("description");
-     localStorage.content = $('description').html();
-     $('.description').html(localStorage.content)
-})
+$("#btn5").on('click', function(){
 
+  if($('#input5').val()) {
+  localStorage.removeItem('input5');
+}
+  localStorage.setItem( time5,$('#input5').val());
+});
+$("#btn6").on('click', function(){
 
-// // THEN the current day is displayed at the top of the calendar
-// // WHEN I scroll down
-// // THEN I am presented with timeblocks for standard business hours
-// $(function (){
-//     $('#schedulerContainer').dxScheduler({
-//         dataSource: data,
-//         currentData:new Date(2020/06/11),
-//         startDayHour: 8,
-//         endDayHour: 19,
-//         views: ["day"],
-//         currentView: "day",
-//         resource: [{
-//             dataSource: resourcsData,
-//             allowMultiple: true,
-//             field: "ownerId",
-//             label: "Owner"
-//         }]   
-//     });
+  if($('#input6').val()) {
+  localStorage.removeItem('input6');
+}
+  localStorage.setItem( time6,$('#input6').val());
+});
+
+$("#btn7").on('click', function(){
+
+  if($('#input7').val()) {
+  localStorage.removeItem('input7');
+}
+  localStorage.setItem( time7,$('#input7').val());
+});
+
+$("#btn8").on('click', function(){
+
+  if($('#input8').val()) {
+  localStorage.removeItem('input8');
+}
+  localStorage.setItem( time8,$('#input8').val());
+});
+
+$("#btn9").on('click', function(){
+
+  if($('#input9').val()) {
+  localStorage.removeItem('input9');
+}
+  localStorage.setItem( time9,$('#input9').val());
+});
+
+$("#btn10").on('click', function(){
+
+  if($('#input10').val()) {
+  localStorage.removeItem('input10');
+}
+  localStorage.setItem( time10,$('#input10').val());
+});
+
+$("#btn11").on('click', function(){
+
+  if($('#input11').val()) {
+  localStorage.removeItem('input11');
+}
+  localStorage.setItem( time11,$('#input11').val());
+});
+
+$("#btn12").on('click', function(){
+
+  if($('#input12').val()) {
+  localStorage.removeItem('input12');
+}
+  localStorage.setItem( time12,$('#input12').val());
+});
+
+$("#btn13").on('click', function(){
+
+  if($('#input13').val()) {
+  localStorage.removeItem('input13');
+}
+  localStorage.setItem( time13,$('#input13').val());
+});
+
+$("#btn14").on('click', function(){
+
+  if($('#input14').val()) {
+  localStorage.removeItem('input14');
+}
+  localStorage.setItem( time14,$('#input14').val());
+});
+
+$("#btn15").on('click', function(){
+
+  if($('#input15').val()) {
+  localStorage.removeItem('input15');
+}
+  localStorage.setItem( time15,$('#input15').val());
+});
+
+$("#btn16").on('click', function(){
+
+  if($('#input16').val()) {
+  localStorage.removeItem('input16');
+}
+  localStorage.setItem( time16,$('#input16').val());
+});
+
+$("#btn17").on('click', function(){
+
+  if($('#input17').val()) {
+  localStorage.removeItem('input17');
+}
+  localStorage.setItem( time17,$('#input17').val());
+});
 
 // // WHEN I view the timeblocks for that day
 // // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-// // WHEN I click into a timeblock
-// $("#descrip").on('click', function(){
-//     $("div#form1").append(
-//         // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
-//         $("<h3/>").text("Contact Form"), $("<p/>").text("This is my form. Please fill it out. It's awesome!"), $("<form/>", {
-//         action: '#',
-//         method: '#'
-//         }).append(
-//         // Create <form> Tag and Appending in HTML id="descrip".
-//         $("<input/>", {
-//         type: 'text',
-//         id: 'vevent',
-//         name: 'event',
-//         placeholder: 'Event'
-//         }), // Creating Input Element With Attribute.
-//         $("<input/>", {
-//         type: 'text',
-//         id: 'vtime',
-//         name: 'time',
-//         placeholder: 'Start Time'
-//         }), $("<textarea/>", {
-//         rows: '5px',
-//         cols: '27px',
-//         type: 'text',
-//         id: 'vdes',
-//         name: 'description',
-//         placeholder: 'description'
-//         }), $("<br/>"), $("<input/>", {
-//         type: 'submit',
-//         id: 'submit',
-//         value: 'Submit'
-//         })))
-//         });
- 
 
-// });
+var currentTime = new Date().getHours();
+if (7 <= currentTime && currentTime < 17) {
+  if (currentTime < 7) {
+     $('.description').css('.past');
+  }
+}
+else {
+  if (currentTime < 17) {
+    $('.description').css('.future');
+  }
+};
 
-// // WHEN I click the save button for that timeblock
-// // THEN the text for that event is saved in local storage
-// // WHEN I refresh the page
-// // THEN the saved events persist
-// // ```
 
-// // THEN I can enter an event
-  
-// // WHEN I click the save button for that timeblock
-// $(".saveBtn").on("click", function(event){
-//     // THEN the text for that event is saved in local storage
-//     $('#test').html("Test");
-//     localStorage.content = $('#test').html();
-//     $('#test').html(localStorage.content)
-// });
 
-// WHEN I refresh the page
-// THEN the saved events persist
-// ```
+});
+
+
+``
     
-})
-//function settingDate(date, day){
-    //     date= new Date(date);
-    //     date.setDate(0);
-    //     date.setHours(23);
-    //     return date;
-    // }
 
-
-// function getDatesBetween(date1, date2){
-//     let range1 = new Date(date1);
-//     let range2 = new Date(date2);
-//     // console.log(range1 + "" + range2);
-//     date1= settingDate(date1, 31);
-//     date2= settingDate(date2, 31);
-//     // console.log(date1 + "" + date2);
-//     let temp;
-//     let dates= [];
-//     while(date1<=date2){
-//        if(date1.getDate()!=31){
-//            temp=settingDate(date1,0);
-//            if (temp >= range1 && temp<= range2) dates.push(temp);
-//        } else{
-//            temp=new Date(date1);
-//            if (temp>=range1 && temp<=range2) dates.push(temp);
-//            date1.setMonth(date1.getMonth() + 1);
-//        }
-//     }
-//     // console.log(dates);
-// }
-
-//let content=getDatesBetween("2020/06/15", "2021/06/21");
-// document.getElementById("timetable").innerHTML = content;
