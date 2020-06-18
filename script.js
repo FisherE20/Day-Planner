@@ -170,12 +170,20 @@ $(window).on("load", function() {
 
   // // WHEN I view the timeblocks for that day
   // // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-
+  
+  function checkTime(){
+    setInterval( function(){
+      var now = moment();
+      var formattedDate = now.format("dddd[,] MMMM Do gggg");
+      var currentHour = now.format("HH");
+      
+      
+    
   $("textarea").each(function(){
     var timeSlot= $(this).attr("id");
-    if(getHours > timeSlot){
+    if(currentHour > timeSlot){
       $(this).prop('disabled', true);
-    }else if (getHours == timeSlot) {
+    }else if (currentHour == timeSlot) {
       $(this).removeClass("future");
       $(this).addClass("present");
     }else {
@@ -185,11 +193,15 @@ $(window).on("load", function() {
 
   $("button").each(function(){
   var currentBtn = $(this).attr(saveBtn);
-  if(getHours > currentBtn){
+  if(currentHour > currentBtn){
     $(this).prop('disabled', true);
   };
 
 });
+
+}, 1000);
+
+};
 
 });
 
