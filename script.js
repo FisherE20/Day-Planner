@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 let date = moment().format("MMMM Do YYYY, h:mm:ss a");
-let getHours = moment().format("h:mm");
+let getHours = moment().format("H");
 
 // GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
@@ -168,29 +168,27 @@ $(window).on("load", function() {
     
   });
 
-  // // WHEN I view the timeblocks for that day
-  // // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-  
-  // function checkTime(){
-  //   setInterval( function(){
-      
-      
-      
-  
+ 
+   console.log(getHours);
   $(".description").each(function(){
-    var timeSlot= $(this).attr("id");
-    if(getHours > timeSlot){
+    var timeSlot= $(this).attr("data-hour");
+     console.log(timeSlot);
+    if(parseInt(getHours)  > parseInt(timeSlot)){
+      $(this).addClass("past");
       $(this).prop('disabled', true);
-    }else if (getHours == timeSlot) {
+      console.log('greater than');
+    }else if (parseInt(getHours)  == parseInt(timeSlot)) {
       $(this).removeClass("future");
       $(this).addClass("present");
+      console.log('equal to');
     }else {
-      $(this).addClass("future");
+      $(this).addClass("future"); 
+      console.log('less than');
     };
   });
 
-  //when this area is uncommented it takes of the displayed date
-  
+ 
+
 //   $("button").each(function(){
 //   var currentBtn = $(this).attr(saveBtn);
 //   if(getHours > currentBtn){
